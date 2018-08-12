@@ -136,7 +136,7 @@ $(obj)/config_data_somc: $(obj)/config_data
 
 filechk_cat = cat $<
 
-$(obj)/config_data: $(KCONFIG_CONFIG) FORCE
+$(obj)/config_data: arch/arm64/configs/sagami_stock_defconfig FORCE
 	$(call filechk,cat)
 
 $(obj)/kheaders.o: $(obj)/kheaders_data.tar.xz
