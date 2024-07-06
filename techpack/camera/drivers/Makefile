@@ -219,10 +219,13 @@ camera-$(CONFIG_SPECTRA_TFE) += \
 	cam_isp/isp_hw_mgr/isp_hw/tfe_csid_hw/cam_tfe_csid530.o \
 	cam_isp/isp_hw_mgr/cam_tfe_hw_mgr.o
 
-
 camera-y += camera_main.o
 
 obj-$(CONFIG_SPECTRA_CAMERA) += camera.o
+
+obj-$(CONFIG_SPECTRA_CAMERA) += \
+	cam_sync/camera_sync.o \
+	cam_sensor_module/cam_sensor/sony_camera.o
 
 ifeq ($(CONFIG_SPECTRA_CAMERA),m)
 $(info "SPECTRA CAMERA IS BUILT AS DLKM")
