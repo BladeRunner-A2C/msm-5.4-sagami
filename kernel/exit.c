@@ -116,6 +116,8 @@ static __init int kernel_exit_sysfs_init(void)
 late_initcall(kernel_exit_sysfs_init);
 #endif
 
+#include <trace/events/task.h>
+
 static void __unhash_process(struct task_struct *p, bool group_dead)
 {
 	nr_threads--;
@@ -162,6 +164,7 @@ static void __exit_signal(struct task_struct *tsk)
 			posix_cpu_timers_exit_group(tsk);
 	}
 #endif
+	trace_task_exit(tsk);
 
 	if (group_dead) {
 		tty = sig->tty;
