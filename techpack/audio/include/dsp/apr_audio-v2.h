@@ -996,6 +996,17 @@ struct audproc_enable_param_t {
 	uint32_t                  enable;
 };
 
+#define AUDPROC_MODULE_ID_RAMP_UP_CLIPPER_1      0x10101100
+#define AUDPROC_PARAM_ID_RAMP_UP_CLIPPER_ENABLE  0x10101001
+
+struct audproc_enable_rampup_clipper_module {
+	uint32_t	num_channels;
+	uint32_t	clipper_enable_left;
+	uint32_t	clipper_enable_right;
+	uint32_t	gain_fade_in_enable_left;
+	uint32_t	gain_fade_in_enable_right;
+} __packed;
+
 /*
  * Allows a client to control the gains on various session-to-COPP paths.
  */
@@ -9385,11 +9396,16 @@ struct asm_stream_cmd_open_read_compressed {
 								0x11000000
 #define ADM_CMD_COPP_OPENOPOLOGY_ID_SPEAKER_MCH_PEAK_VOL \
 								0x0001031B
+#define ADM_CMD_COPP_OPENOPOLOGY_ID_SPEAKER_RX_MCH_IIR_COPP_MBDRC_V3 \
+								0x11000004
+#define ADM_CMD_COPP_OPENOPOLOGY_ID_SPEAKER_RX_MCH_FIR_IIR_COPP_MBDRC_V3 \
+								0x11000009
 #define ADM_CMD_COPP_OPENOPOLOGY_ID_MIC_MONO_AUDIO_COPP  0x00010315
 #define ADM_CMD_COPP_OPENOPOLOGY_ID_MIC_STEREO_AUDIO_COPP 0x00010316
 #define AUDPROC_COPPOPOLOGY_ID_MCHAN_IIR_AUDIO           0x00010715
 #define ADM_CMD_COPP_OPENOPOLOGY_ID_DEFAULT_AUDIO_COPP   0x00010BE3
 #define ADM_CMD_COPP_OPENOPOLOGY_ID_PEAKMETER_AUDIO_COPP 0x00010317
+#define ADM_CMD_COPP_OPENOPOLOGY_ID_AUDIO_RX_SONY_SPEAKER 0x11000010
 #define AUDPROC_MODULE_ID_AIG   0x00010716
 #define AUDPROC_PARAM_ID_AIG_ENABLE		0x00010717
 #define AUDPROC_PARAM_ID_AIG_CONFIG		0x00010718
@@ -12547,17 +12563,6 @@ struct afe_param_id_clock_set_v2_t {
 	uint32_t	m;
 	uint32_t	n;
 	uint32_t	d;
-};
-
-#define AFE_PARAM_ID_CLOCK_MUX_CFG		0x000102fd
-struct afe_param_id_clock_mux_cfg_t {
-	char mux_string[128];
-	/* Name of the Mux string.
-	 * String name may varies for each target, so HLOS must pass the proper string based on IPCAT.
-	 * @values Valid string with a maximum of 128 characters
-	 */
-	uint32_t mux_value;
-	/* Value of the external m-clock. */
 };
 
 struct afe_clk_cfg {
