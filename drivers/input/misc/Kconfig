@@ -97,6 +97,12 @@ config INPUT_ATMEL_CAPTOUCH
 	  To compile this driver as a module, choose M here: the
 	  module will be called atmel_captouch.
 
+config INPUT_AUDX1050
+	tristate "AUDX1050 driver support"
+	help
+	  Say Y here if you want to support AUDX1050
+	  as photometric device.
+
 config INPUT_BMA150
 	tristate "BMA150/SMB380 acceleration sensor support"
 	depends on I2C
