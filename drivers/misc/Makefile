@@ -67,3 +67,4 @@ obj-$(CONFIG_WIGIG_SENSING_SPI)	+= wigig_sensing.o
 obj-$(CONFIG_HISI_HIKEY_USB)	+= hisi_hikey_usb.o
 obj-$(CONFIG_LDO_VIBRATOR)	+= ldo_vibrator.o
 obj-$(CONFIG_SONY_EXT_UIM_CTRL)	+= sony_ext_uim_ctrl.o
+obj-$(CONFIG_SENSORS_TCS3490)	+= tcs3490.o
