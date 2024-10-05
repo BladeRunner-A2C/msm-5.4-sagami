@@ -1,0 +1,11 @@
+config NXP_P73
+	tristate "NXP P73 secure element protocol driver (SPI) devices"
+	depends on SPI && NFC_SN1X0
+	help
+	  This module adds support for a NXP P73 secure element protocol
+	  driver (SPI) devices.
+	  Select this if your platform is using the SPI bus.
+
+	  To compile this driver as a module, choose m here. The module will
+	  be called p73.
+	  Say Y if unsure.
